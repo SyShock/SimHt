@@ -90,11 +90,16 @@ const instance = http.createServer((req, res) => {
         if (req.url === '/') {
             handlePageRequest(req, res, url)
         } else {
-            const stat = fs.statSync(url)
-            if (stat.isFile()) {
-                handleFileRequest(req, res, stat, url)
-            } else {
-                handlePageRequest(req, res, url)
+            try {
+                const stat = fs.statSync(url)
+                if (stat.isFile()) {
+                    handleFileRequest(req, res, stat, url)
+                } else {
+                    handlePageRequest(req, res, url)
+                }
+            }
+            catch (err) {
+                console.error(err)
             }
         }
     }

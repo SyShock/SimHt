@@ -2,7 +2,7 @@
 
 'use strict';
 
-const server = require("./server.js")
+const server = require("./src/server.js")
 const port = 8080;
 
 server.instance.listen(port);
