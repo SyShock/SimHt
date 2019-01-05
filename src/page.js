@@ -70,6 +70,7 @@ function uploadFiles(body, opt) {
     const headers = new Headers()
     headers.set('file-name', body.fileName)
     headers.set('Content-Length', body.size);
+    headers.set('file-size', opt.file.size);
     fetch(document.location, {
         method: 'POST',
         headers,

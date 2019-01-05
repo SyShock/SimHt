@@ -6,4 +6,4 @@ const server = require("./src/server.js")
 const port = 8080;
 
 server.instance.listen(port);
-console.info(`SimHt started on port :${port}`)
+console.info(`SimHt started on ${server.ip}:${port}`)
