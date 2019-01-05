@@ -7,18 +7,23 @@ const bytesToSize = bytes => {
 };
 
 const permsNumToChar = perms => {
+    const inDec = (perms & parseInt("777", 8)).toString(8)
+    const owner = parseInt(inDec[0])
+    const group = parseInt(inDec[1])
+    const everyone = parseInt(inDec[2])
     return (perms & 0040000 ? 'd' : '-') +
-        (perms & 1 ? 'x' : '-') +
-        (perms & 2 ? 'w' : '-') +
-        (perms & 4 ? 'r' : '-') +
 
-        (perms & 10 ? 'x' : '-') +
-        (perms & 20 ? 'w' : '-') +
-        (perms & 40 ? 'r' : '-') +
+        (owner & 4 ? 'r' : '-') +
+        (owner & 2 ? 'w' : '-') +
+        (owner & 1 ? 'x' : '-') +
 
-        (perms & 100 ? 'x' : '-') +
-        (perms & 200 ? 'w' : '-') +
-        (perms & 400 ? 'r' : '-')
+        (group & 4 ? 'r' : '-') +
+        (group & 2 ? 'w' : '-') +
+        (group & 1 ? 'x' : '-') +
+
+        (everyone & 4 ? 'r' : '-') +
+        (everyone & 2 ? 'w' : '-') +
+        (everyone & 1 ? 'x' : '-') 
 }
 
 // page
