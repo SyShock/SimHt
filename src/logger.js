@@ -40,8 +40,10 @@ const formatDate = (date) => {
 
 const _simhtPath = `${homedir}/.simht/`
 const _filePath = _simhtPath+formatDate(new Date).fileName
-if (!fs.existsSync(`${homedir}/.simht/`)){
-    fs.mkdirSyncr(_simhtPath)
+const init = () => {
+    if (!fs.existsSync(`${homedir}/.simht/`) && writeToFile){
+        fs.mkdirSync(_simhtPath)
+    }
 }
 
 let file = null
@@ -58,5 +60,6 @@ const log = (data) => {
 
 module.exports = {
     log,
-    setWriteToFile
+    setWriteToFile,
+    init
 }

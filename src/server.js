@@ -30,6 +30,7 @@ process.argv.forEach((val, index) => {
         default: break;
     }
 });
+logger.init();
 
 let route = process.argv[process.argv.length-1]
 route = route.replace(/\/$/g, '')
